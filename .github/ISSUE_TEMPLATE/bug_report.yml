@@ -3,7 +3,6 @@ description: File a bug report
 title: "[Bug]: "
 labels: ["bug", "triage"]
 assignees:
-  - krypt007
   - Ej-leone
   - bkimotho
 body:
@@ -35,6 +34,11 @@ body:
       description: What version of our software are you running?
       options:
         - USSD (Default)
+        - API
+        - Web App
+        - Mobile App
+        - WhatsApp bot
+        - dapp
     validations:
       required: true
   - type: dropdown
