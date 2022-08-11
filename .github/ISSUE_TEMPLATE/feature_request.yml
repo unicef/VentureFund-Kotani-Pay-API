@@ -3,7 +3,6 @@ description: File a bug report
 title: "[Feature Request]: "
 labels: ["new", "suggestion"]
 assignees:
-  - krypt007
   - Ej-leone
   - bkimotho
 body:
@@ -38,6 +37,7 @@ body:
         - USSD
         - Web App
         - Mobile App
+        - WhatsApp bot
         - dapp
     validations:
       required: true
