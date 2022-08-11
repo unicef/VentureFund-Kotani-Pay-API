@@ -2,7 +2,6 @@
   <a href="https://kotanipay.com/" target="blank"><img src="https://2655951489-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhonoqUXGYYiDPsMOyqhQ%2Fuploads%2FZpMntLQe2ILzTIoxukWl%2FKotani%20Pay%20logo_Light%20background.png?alt=media&token=a88be60e-52db-49a2-aaf5-5f6925d147c1" width="320" alt="Nest Logo" /></a>
 </p>
 Kotani Pay API
-==============
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/Kotani-Pay/Kotani-Pay-API/branch/test-coverage/graph/badge.svg?token=ZD59SAE7NX)](https://codecov.io/gh/Kotani-Pay/Kotani-Pay-API)
