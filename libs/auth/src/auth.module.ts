@@ -5,12 +5,11 @@ import { AuthService } from '@kotanicore/auth/auth.service';
 import { JwtStrategy } from '@kotanicore/auth/guards/jwt.strategy';
 import { RepositoryModule } from '@kotanicore/repository';
 
-//Todo: Move Secret to Env
 @Module({
   imports: [
     RepositoryModule,
     PassportModule,
-    JwtModule.register({ secret: 'hard!to-guess_secret' }),
+    JwtModule.register({ secret: process.env.JWT_SECRET }),
   ],
   exports: [AuthService],
   providers: [AuthService, JwtStrategy],
