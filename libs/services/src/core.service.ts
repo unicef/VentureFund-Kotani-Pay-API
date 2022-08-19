@@ -69,4 +69,12 @@ export class CoreService {
       throw new Error(e.message);
     }
   }
+
+  async listUsers() {
+    try {
+      return await this.repo.getAllUsers();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

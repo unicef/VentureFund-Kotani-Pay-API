@@ -61,4 +61,6 @@ export class BaseMongoRepository {
       publicAddress: result.publicAddress,
     };
   };
+
+  getAllUsers = async () => await this.accountModel.count();
 }

@@ -55,4 +55,12 @@ export class AppController {
   async getBalance(@Body() body: GetBalanceDto): Promise<any> {
     return await this.coreService.getBalance(body.phoneNumber);
   }
+
+  @Get('all-users')
+  async getAllUsers() {
+    const usercount = await this.coreService.listUsers();
+    return {
+      usercount: usercount,
+    };
+  }
 }
