@@ -5,7 +5,7 @@ import { AccountDocumentInterface } from '@kotanicore/repository/interface/accou
 import { KycDocumentInterface } from '@kotanicore/repository/interface/kyc-document.interface';
 import { AccountInterface } from '@kotanicore/repository/interface/account.interface';
 import { UserInterface } from '@kotanicore/repository/interface/user.interface';
-
+import { hashPassword } from '../util';
 /**/
 export class BaseMongoRepository {
   constructor(
@@ -37,8 +37,9 @@ export class BaseMongoRepository {
     await this.kycModel.exists({ _id: userId });
 
   createUser = async (userData): Promise<Partial<UserInterface>> => {
-    //TODO: encrypt Password
-    const user = await this.userModel.create(userData);
+    const hash = await hashPassword(userData.password);
+
+    const user = await this.userModel.create({ ...userData, password: hash });
     return {
       phoneNumber: user.phoneNumber,
       name: user.name,
