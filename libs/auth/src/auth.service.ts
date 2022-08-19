@@ -12,6 +12,8 @@ export class AuthService {
 
   async validateUser(phone: string, password: string) {
     const user = await this.repo.checkIfUserExists(phone);
+    console.log({password, user});
+    
     
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
