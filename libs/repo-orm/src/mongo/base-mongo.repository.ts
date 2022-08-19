@@ -37,6 +37,7 @@ export class BaseMongoRepository {
     await this.kycModel.exists({ _id: userId });
 
   createUser = async (userData): Promise<Partial<UserInterface>> => {
+    console.log({ userData });
     const hash = await hashPassword(userData.password);
 
     const user = await this.userModel.create({ ...userData, password: hash });
