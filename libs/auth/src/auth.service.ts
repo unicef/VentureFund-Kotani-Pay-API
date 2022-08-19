@@ -12,6 +12,7 @@ export class AuthService {
 
   async validateUser(phone: string, password: string) {
     const user = await this.repo.checkIfUserExists(phone);
+    
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
       throw new HttpException('UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
@@ -37,7 +38,7 @@ export class AuthService {
         token: this.jwtService.sign(payload),
       };
     } catch (err) {
-      console.error('/authentication/login ||', err);
+      console.error('authentication/login ||', err);
       throw new HttpException(
         'Something went wrong',
         HttpStatus.INTERNAL_SERVER_ERROR,
