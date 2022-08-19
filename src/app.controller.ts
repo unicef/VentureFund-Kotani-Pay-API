@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { AppService } from './app.service';
 import { CoreService } from '@kotanicore/services';
 import { CreateUserDto } from '@kotanicore/repository/dtos/createUser.dto';
@@ -23,7 +31,12 @@ export class AppController {
   @Post('login')
   async login(@Body() data: LoginDto) {
     const user = await this.authService.validateUser(data.phone, data.password);
-    return await this.authService.login(user, '');
+    if (user) {
+      await this.authService.login(user, '');
+    } else {
+      throw new HttpException('Wrong Credentials', HttpStatus.UNAUTHORIZED);
+    }
+    return;
   }
 
   @Post('create')
