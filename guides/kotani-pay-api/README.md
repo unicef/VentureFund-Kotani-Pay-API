@@ -17,5 +17,5 @@ https://europe-west3-kotanimac.cloudfunctions.net/api_v2
 **Test**&#x20;
 
 ```
-https://europe-west3-kotani-api-v2.cloudfunctions.net/api_v2
+ https://europe-west3-kotanipay-test.cloudfunctions.net/api_v2
 ```
