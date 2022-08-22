@@ -5,6 +5,9 @@
   "author": "",
   "private": "false",
   "license": "MIT",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -30,6 +33,7 @@
     "@nestjs/mongoose": "^9.1.0",
     "@nestjs/passport": "^8.2.1",
     "@nestjs/platform-express": "^7.6.15",
+    "@nestjs/swagger": "^6.0.5",
     "@types/passport-jwt": "^3.0.6",
     "bcrypt": "^5.0.1",
     "bip39-light": "^1.0.7",
