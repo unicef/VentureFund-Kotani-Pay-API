@@ -6,6 +6,7 @@ import {
   AccountSchema,
   KycSchema,
   UserSchema,
+  TransactionSchema,
 } from '@kotanicore/repository/schema';
 
 @Module({
@@ -14,6 +15,7 @@ import {
       { name: 'user', schema: UserSchema },
       { name: 'accounts', schema: AccountSchema },
       { name: 'kycdata', schema: KycSchema },
+      { name: 'transactions', schema: TransactionSchema },
     ]),
   ],
   providers: [RepositoryService],
