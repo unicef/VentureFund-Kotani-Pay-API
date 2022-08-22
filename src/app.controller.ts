@@ -14,6 +14,7 @@ import { SetKycDto } from '@kotanicore/repository/dtos/setKyc.dto';
 import { GetBalanceDto } from '@kotanicore/repository/dtos/getBalance.dto';
 import { AuthService, JwtAuthGuard } from '@kotanicore/auth';
 import { LoginDto } from '@kotanicore/repository/dtos/login.dto';
+import { GetUserDto } from '@kotanicore/repository/dtos/getUser.dto';
 
 @Controller()
 export class AppController {
@@ -31,6 +32,8 @@ export class AppController {
   @Post('login')
   async login(@Body() data: LoginDto) {
     const user = await this.authService.validateUser(data.phone, data.password);
+    console.log({user});
+    
     if (user) {
       await this.authService.login(user, '');
     } else {
@@ -62,5 +65,19 @@ export class AppController {
     return {
       usercount: usercount,
     };
+  }
+
+  // send ObjectId
+  @Get("user")
+  async getUser(@Body() body: GetUserDto): Promise<any>{
+    return await this.coreService.getUser(body.id)
+  }
+
+  @Get('transactions')
+  async getTransactions(){
+    const transactions = await this.coreService.listTransactions();
+    return {
+      transactions: transactions,
+    }
   }
 }
