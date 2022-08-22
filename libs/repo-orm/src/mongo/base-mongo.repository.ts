@@ -5,7 +5,8 @@ import { AccountDocumentInterface } from '@kotanicore/repository/interface/accou
 import { KycDocumentInterface } from '@kotanicore/repository/interface/kyc-document.interface';
 import { AccountInterface } from '@kotanicore/repository/interface/account.interface';
 import { UserInterface } from '@kotanicore/repository/interface/user.interface';
-
+import { hashPassword } from '../util';
+import { TransactionDocumentInterface } from '@kotanicore/repository';
 /**/
 export class BaseMongoRepository {
   constructor(
@@ -15,6 +16,8 @@ export class BaseMongoRepository {
     private readonly accountModel: Model<AccountDocumentInterface>,
     @InjectModel('kycdata')
     private readonly kycModel: Model<KycDocumentInterface>,
+    @InjectModel('transactions')
+    private readonly transactionsModel: Model<TransactionDocumentInterface>,
   ) {}
 
   checkIfUserExists = async (phone: string): Promise<UserInterface> => {
@@ -37,8 +40,11 @@ export class BaseMongoRepository {
     await this.kycModel.exists({ _id: userId });
 
   createUser = async (userData): Promise<Partial<UserInterface>> => {
-    //TODO: encrypt Password
-    const user = await this.userModel.create(userData);
+    console.log({ userData });
+    const hash = await hashPassword(userData.password);
+
+    const user = await this.userModel.create({ ...userData, password: hash });
+  
     return {
       phoneNumber: user.phoneNumber,
       name: user.name,
@@ -59,4 +65,11 @@ export class BaseMongoRepository {
       publicAddress: result.publicAddress,
     };
   };
+
+  //this is for geting all users not accounts
+  getAllUsers = async () => await this.userModel.count();
+
+  getAllTransactions = async ()=> await this.transactionsModel;
+   
+
 }

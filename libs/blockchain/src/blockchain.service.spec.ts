@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BlockchainService } from './blockchain.service';
-import exp from 'constants';
 
 describe('BlockchainService', () => {
   let service: BlockchainService;
@@ -25,12 +24,11 @@ describe('BlockchainService', () => {
     });
   });
 
-  //Todo: Resolve by figuring out how to run Celo in TestNet during local and test Enviroment
-  // describe('retreiveCusdBalance', () => {
-  //   it('Should retrieve correct balance given the address', async () => {
-  //     await expect(service.retreiveCusdBalance('address')).resolves.toBe('');
-  //   });
-  // });
+  describe('retreiveCusdBalance', () => {
+    it('Should retrieve correct balance given the address', async () => {
+      await expect(service.retreiveCusdBalance('address')).resolves.toBe('');
+    });
+  });
 
   describe('createAccountInfo', () => {
     it('Should Generate a Memonic', async () => {

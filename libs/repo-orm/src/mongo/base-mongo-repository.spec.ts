@@ -112,17 +112,16 @@ describe('Base Mongo Repository', () => {
     });
   });
 
-  //Todo: Fix Id issue
-  // it('should checkisUserKyced', async () => {
-  //   jest.spyOn(kycModel, 'exists').mockReturnValue(
-  //     createMock({
-  //       exec: jest.fn().mockResolvedValueOnce(mockKycDoc()),
-  //     }) as any,
-  //   );
-  //   const kycFound = await baseMongoRepository.checkisUserKyced('');
-  //   const kycExpect = mockKyc();
-  //   expect(kycFound).toEqual(kycExpect);
-  // });
+  it('should checkisUserKyced', async () => {
+    jest.spyOn(kycModel, 'exists').mockReturnValue(
+      createMock({
+        exec: jest.fn().mockResolvedValueOnce(mockKycDoc()),
+      }) as any,
+    );
+    const kycFound = await baseMongoRepository.checkisUserKyced('');
+    const kycExpect = mockKyc();
+    expect(kycFound).toEqual(kycExpect);
+  });
 
   it('should setUserKyc', async () => {
     jest
@@ -148,15 +147,14 @@ describe('Base Mongo Repository', () => {
     });
   });
 
-  //Todo: find by Id
-  // it('should getAccountInfo', async () => {
-  //   jest.spyOn(accountModel, 'findById').mockReturnValue(
-  //     createMock({
-  //       exec: jest.fn().mockResolvedValueOnce(mockAccountDoc()),
-  //     }) as any,
-  //   );
-  //   const accFound = await baseMongoRepository.getAccountInfo(mockAccount());
-  //   const accExpect = mockAccount();
-  //   expect(accFound).toEqual(accExpect);
-  // });
+  it('should getAccountInfo', async () => {
+    jest.spyOn(accountModel, 'findById').mockReturnValue(
+      createMock({
+        exec: jest.fn().mockResolvedValueOnce(mockAccountDoc()),
+      }) as any,
+    );
+    const accFound = await baseMongoRepository.getAccountInfo(mockAccount());
+    const accExpect = mockAccount();
+    expect(accFound).toEqual(accExpect);
+  });
 });

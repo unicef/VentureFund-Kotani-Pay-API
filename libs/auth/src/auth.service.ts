@@ -37,7 +37,7 @@ export class AuthService {
         token: this.jwtService.sign(payload),
       };
     } catch (err) {
-      console.error('/authentication/login ||', err);
+      console.error('authentication/login ||', err);
       throw new HttpException(
         'Something went wrong',
         HttpStatus.INTERNAL_SERVER_ERROR,

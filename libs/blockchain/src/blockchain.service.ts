@@ -8,7 +8,7 @@ import {
 } from '@kotanicore/blockchain/utilities';
 import { AccountInterface } from '@kotanicore/repository/interface/account.interface';
 const phone_hash_fn = 'sha1';
-const iv = 'process.env.IV'; //Todo:move to env
+const iv = process.env.IV;
 const NODE_URL = 'https://celo-mainnet--rpc.datahub.figment.io/apikey/API_KEY/';
 const kit = contractkit.newKit(NODE_URL);
 
