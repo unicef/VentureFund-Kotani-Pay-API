@@ -5,4 +5,5 @@ export const UserSchema = new Schema({
   name: String,
   phoneNumber: String,
   email: String,
+  password: String,
 });

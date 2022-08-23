@@ -25,6 +25,7 @@ export class BaseMongoRepository {
     if (!user) {
       return null;
     }
+    console.log('==========> user exists' + user.password);
     return {
       id: '',
       phoneNumber: user.phoneNumber,
@@ -43,12 +44,33 @@ export class BaseMongoRepository {
     console.log({ userData });
     const hash = await hashPassword(userData.password);
 
-    const user = await this.userModel.create({ ...userData, password: hash });
-  
+    // change value of password key
+    // const newUser = {
+    //   id: userData?.id,
+    //   name: userData?.name,
+    //   phoneNumber: userData?.phoneNumber,
+    //   email: userData?.email,
+    //   password: hash,
+    // };
+    console.log('========> hashed pass' + hash);
+    const user = await this.userModel.create({
+      id: userData?.id,
+      name: userData?.name,
+      phoneNumber: userData?.phoneNumber,
+      email: userData?.email,
+      password: hash,
+    });
+
+    // const user = await this.userModel.create({ ...userData, password: hash });
+    console.log('============> saved user in db' + user);
+    // log what the above variable is
+    console.log('============>create user password' + hash);
+
     return {
       phoneNumber: user.phoneNumber,
       name: user.name,
       email: user.email,
+      password: user.password,
     };
   };
 
@@ -69,7 +91,5 @@ export class BaseMongoRepository {
   //this is for geting all users not accounts
   getAllUsers = async () => await this.userModel.count();
 
-  getAllTransactions = async ()=> await this.transactionsModel;
-   
-
+  getAllTransactions = async () => await this.transactionsModel;
 }
