@@ -32,16 +32,14 @@ export class AuthService {
       sub: user.id,
     };
 
-    console.log('=============>payload ' + payload.user);
 
     try {
-      console.log({ token: this.jwtService.sign(payload.user) });
+      console.log({ token: this.jwtService.sign(payload) });
       return {
-        token: this.jwtService.sign(payload.user),
+        token: this.jwtService.sign(payload),
       };
     } catch (err) {
       console.error('authentication/login ||', err);
-      // console.log('=============>' + err);
       throw new HttpException(
         'Something went wrong',
         HttpStatus.INTERNAL_SERVER_ERROR,

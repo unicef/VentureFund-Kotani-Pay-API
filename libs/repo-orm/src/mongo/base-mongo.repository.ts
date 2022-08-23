@@ -44,33 +44,12 @@ export class BaseMongoRepository {
     console.log({ userData });
     const hash = await hashPassword(userData.password);
 
-    // change value of password key
-    // const newUser = {
-    //   id: userData?.id,
-    //   name: userData?.name,
-    //   phoneNumber: userData?.phoneNumber,
-    //   email: userData?.email,
-    //   password: hash,
-    // };
-    console.log('========> hashed pass' + hash);
-    const user = await this.userModel.create({
-      id: userData?.id,
-      name: userData?.name,
-      phoneNumber: userData?.phoneNumber,
-      email: userData?.email,
-      password: hash,
-    });
-
-    // const user = await this.userModel.create({ ...userData, password: hash });
-    console.log('============> saved user in db' + user);
-    // log what the above variable is
-    console.log('============>create user password' + hash);
+    const user = await this.userModel.create({ ...userData, password: hash });
 
     return {
       phoneNumber: user.phoneNumber,
       name: user.name,
       email: user.email,
-      password: user.password,
     };
   };
 
