@@ -32,10 +32,12 @@ export class AuthService {
       sub: user.id,
     };
 
+
     try {
-      return {
-        token: this.jwtService.sign(payload),
+      const result = {
+        token: this.jwtService.sign(payload) 
       };
+      return result;
     } catch (err) {
       console.error('authentication/login ||', err);
       throw new HttpException(

@@ -44,7 +44,7 @@ export class BaseMongoRepository {
     const hash = await hashPassword(userData.password);
 
     const user = await this.userModel.create({ ...userData, password: hash });
-  
+
     return {
       phoneNumber: user.phoneNumber,
       name: user.name,
@@ -69,7 +69,5 @@ export class BaseMongoRepository {
   //this is for geting all users not accounts
   getAllUsers = async () => await this.userModel.count();
 
-  getAllTransactions = async ()=> await this.transactionsModel;
-   
-
+  getAllTransactions = async () => await this.transactionsModel;
 }
