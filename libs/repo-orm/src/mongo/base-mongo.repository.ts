@@ -25,7 +25,6 @@ export class BaseMongoRepository {
     if (!user) {
       return null;
     }
-    console.log('==========> user exists' + user.password);
     return {
       id: '',
       phoneNumber: user.phoneNumber,

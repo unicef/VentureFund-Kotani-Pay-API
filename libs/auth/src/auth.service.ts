@@ -34,10 +34,10 @@ export class AuthService {
 
 
     try {
-      console.log({ token: this.jwtService.sign(payload) });
-      return {
-        token: this.jwtService.sign(payload),
+      const result = {
+        token: this.jwtService.sign(payload) 
       };
+      return result;
     } catch (err) {
       console.error('authentication/login ||', err);
       throw new HttpException(

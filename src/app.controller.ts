@@ -43,14 +43,14 @@ export class AppController {
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   async login(@Body() data: LoginDto) {
     const user = await this.authService.validateUser(data.phone, data.password);
-    console.log({ user });
+    // console.log({ user });
 
     if (user) {
-      await this.authService.login(user, '');
+      return await this.authService.login(user, '');
     } else {
       throw new HttpException('Wrong Credentials', HttpStatus.UNAUTHORIZED);
     }
-    return;
+    // return;
   }
 
   @Post('create')
