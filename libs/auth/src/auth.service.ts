@@ -35,6 +35,8 @@ export class AuthService {
 
     try {
       const result = {
+        name: user.name,
+        phone: user.phoneNumber,
         token: this.jwtService.sign(payload) 
       };
       return result;
