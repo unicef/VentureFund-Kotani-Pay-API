@@ -6,10 +6,6 @@ Welcome to the Kotani Pay source code repository!&#x20;
 
 Kotani Pay is a stablecoin to fiat on-ramp and off-ramp service. The service is offered as an end to end API (Application Programming Interface) to enable other businesses to integrate and also as a USSD (Unstructured Supplementary Service Data) application for end-users to convert stablecoins to local fiat.
 
-![Kotani Pay Tech Stack](.gitbook/assets/Slide2.png)
-
-
-
 The Kotani Pay API enables Blockchain protocols, decentralized applications and FinTech services to connect to traditional payment systems to enable cash out to bank and mobile money accounts. Kotani Pay offers a simple integration experience.
 
 Majority of Blockchain protocols require internet access and installation of additional mobile applications or wallets. This limits their adoption locking out the users who are set to benefit the most. Kotani Pay through the API makes access to these protocols and their tokens possible without the need of an Internet connection.
