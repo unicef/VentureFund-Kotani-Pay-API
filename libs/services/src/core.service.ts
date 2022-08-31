@@ -79,23 +79,28 @@ export class CoreService {
     }
   }
 
-  async getUser(id:string){
-    try{
-      return await this.repo.getUserDetails(id)
-    
-    } catch(error) {
+  async getUser(id: string) {
+    try {
+      return await this.repo.getUserDetails(id);
+    } catch (error) {
       throw new Error(error);
     }
-
   }
 
-  async listTransactions(){
+  async listTransactions() {
     try {
       return await this.repo.getAllTransactions();
     } catch (error) {
       throw new Error(error);
     }
   }
+
+  async processMoolaLoan(id: string) {
+    const userInfo = await  await this.repo.getAccountDetails(id);
+    const privateKey = await this.blockService.getPrivateKey(userInfo.seedKey,IV)
+
+
+    return
+
+  }
 }
-
-

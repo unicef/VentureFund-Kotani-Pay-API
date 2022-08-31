@@ -15,12 +15,15 @@ import { GetBalanceDto } from '@kotanicore/repository/dtos/getBalance.dto';
 import { AuthService, JwtAuthGuard } from '@kotanicore/auth';
 import { LoginDto } from '@kotanicore/repository/dtos/login.dto';
 import { GetUserDto } from '@kotanicore/repository/dtos/getUser.dto';
-import { ApiCreatedResponse,
-        ApiUnauthorizedResponse,
-       ApiForbiddenResponse,
-       ApiOkResponse,
-       ApiNotFoundResponse,
-       ApiUnprocessableEntityResponse } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiUnauthorizedResponse,
+  ApiForbiddenResponse,
+  ApiOkResponse,
+  ApiNotFoundResponse,
+  ApiUnprocessableEntityResponse,
+} from '@nestjs/swagger';
+import { GetMoolaLoan } from '@kotanicore/repository/dtos/getMoolaLoan';
 
 @Controller()
 export class AppController {
@@ -91,22 +94,31 @@ export class AppController {
   }
 
   // send ObjectId
-  @Get("user")
+  @Get('user')
   @ApiOkResponse({ description: 'The resource was returned successfully' })
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   @ApiNotFoundResponse({ description: 'Resource not found' })
-  async getUser(@Body() body: GetUserDto): Promise<any>{
-    return await this.coreService.getUser(body.id)
+  async getUser(@Body() body: GetUserDto): Promise<any> {
+    return await this.coreService.getUser(body.id);
   }
 
   @Get('transactions')
   @ApiOkResponse({ description: 'The resource was returned successfully' })
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   @ApiNotFoundResponse({ description: 'Resource not found' })
-  async getTransactions(){
+  async getTransactions() {
     const transactions = await this.coreService.listTransactions();
     return {
       transactions: transactions,
-    }
+    };
+  }
+
+  @Get('cinchLoan')
+  @UseGuards(JwtAuthGuard)
+  @ApiOkResponse({ description: 'The resource was returned successfully' })
+  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  @ApiNotFoundResponse({ description: 'Resource not found' })
+  async getLoan(@Body() body: GetMoolaLoan) {
+    return await this.coreService.processMoolaLoan(body.id);
   }
 }
