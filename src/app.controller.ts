@@ -21,6 +21,9 @@ import { ApiCreatedResponse,
        ApiOkResponse,
        ApiNotFoundResponse,
        ApiUnprocessableEntityResponse } from '@nestjs/swagger';
+import { Roles } from '@kotanicore/auth/rbac/roles.decorator';
+import { Role } from '@kotanicore/auth/rbac/enums/role.enum';
+import { RolesGuard } from '@kotanicore/auth/rbac/guards/roles.guard';
 
 @Controller()
 export class AppController {
@@ -57,6 +60,7 @@ export class AppController {
   @ApiCreatedResponse({ description: 'Created Succesfully' })
   @ApiUnprocessableEntityResponse({ description: 'Bad Request' })
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  @Roles(Role.Admin)
   async createUser(@Body() createUser: CreateUserDto) {
     return await this.coreService.createUser(createUser);
   }

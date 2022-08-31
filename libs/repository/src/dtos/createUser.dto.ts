@@ -6,6 +6,7 @@ import {
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
+import { Role } from '@kotanicore/auth/rbac/enums/role.enum';
 
 export class CreateUserDto {
   @ApiProperty({
@@ -36,4 +37,11 @@ export class CreateUserDto {
 })
   @IsNotEmpty()
   password: string;
+
+  @ApiProperty({
+    type: Array,
+    description: 'This is a required property',
+  })
+  @IsNotEmpty()
+  roles: Role[];
 }

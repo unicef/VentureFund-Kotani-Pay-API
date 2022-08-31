@@ -5,7 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CoreModule } from '@kotanicore/services/core.module';
 import { AuthModule } from '@kotanicore/auth';
 import { ConfigModule } from '@nestjs/config';
-
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from '@kotanicore/auth/rbac/guards/roles.guard';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -14,6 +15,12 @@ import { ConfigModule } from '@nestjs/config';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: RolesGuard,
+    // },
+  ],
 })
 export class AppModule {}
