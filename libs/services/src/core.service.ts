@@ -3,7 +3,7 @@ import { BlockchainService } from '@kotanicore/blockchain';
 import { CreateUserDto } from '@kotanicore/repository/dtos/createUser.dto';
 import { SetKycDto } from '@kotanicore/repository/dtos/setKyc.dto';
 import { RepositoryService } from '@kotanicore/repository';
-import { ObjectId } from 'mongoose';
+
 
 @Injectable()
 export class CoreService {
@@ -87,6 +87,31 @@ export class CoreService {
       throw new Error(error);
     }
 
+  }
+  async getAllUsers(){
+    try{
+      return await this.repo.getAllUserDetails();
+    }
+    catch(error){
+      throw new Error(error);
+    }
+  }
+
+  async getRecentAddUserList(){
+    try{
+      return await this.repo.getRecentAddedUser();
+    }
+    catch(error){
+      throw new Error(error);
+    }
+  }
+
+  async getUsersAnalytics(){
+    try{
+      return await this.repo.getUserAnalytics();
+    }catch(error){
+      throw new Error(error);
+    }
   }
 
   async listTransactions(){

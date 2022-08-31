@@ -6,4 +6,5 @@ export const UserSchema = new Schema({
   phoneNumber: String,
   email: String,
   password: String,
-});
+  
+},{timestamps:true});
