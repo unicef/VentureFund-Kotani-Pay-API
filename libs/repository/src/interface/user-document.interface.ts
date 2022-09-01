@@ -1,3 +1,4 @@
+import { Role } from '@kotanicore/auth/rbac/enums/role.enum';
 import { Document, ObjectId } from 'mongoose';
 
 export interface UserDocumentInterface extends Document {
@@ -6,4 +7,5 @@ export interface UserDocumentInterface extends Document {
   phoneNumber: string;
   email: string;
   password: string;
+  roles: Role[];
 }

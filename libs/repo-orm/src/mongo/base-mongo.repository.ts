@@ -32,6 +32,9 @@ export class BaseMongoRepository {
       password: user.password,
       name: user.name,
       email: user.email,
+      // admin: user.admin,
+      // user: user.user,
+      roles: user.roles,
     };
   };
 
@@ -50,6 +53,7 @@ export class BaseMongoRepository {
       phoneNumber: user.phoneNumber,
       name: user.name,
       email: user.email,
+      roles: user.roles,
     };
   };
 
