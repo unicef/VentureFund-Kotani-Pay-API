@@ -7,7 +7,5 @@ export const UserSchema = new Schema({
   phoneNumber: String,
   email: String,
   password: String,
-  // admin: Boolean,
-  // user: Boolean,
   roles: Array,
 });

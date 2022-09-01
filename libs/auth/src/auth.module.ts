@@ -14,14 +14,6 @@ import { RolesGuard } from './rbac/guards/roles.guard';
     JwtModule.register({ secret: process.env.JWT_SECRET }),
   ],
   exports: [AuthService],
-  providers: [
-    AuthService,
-    JwtStrategy,
-    // RolesGuard,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: RolesGuard,
-    // },
-  ],
+  providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}

@@ -15,12 +15,6 @@ import { RolesGuard } from '@kotanicore/auth/rbac/guards/roles.guard';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: RolesGuard,
-    // },
-  ],
+  providers: [AppService],
 })
 export class AppModule {}
