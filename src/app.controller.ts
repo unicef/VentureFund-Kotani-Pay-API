@@ -112,4 +112,39 @@ export class AppController {
       transactions: transactions,
     };
   }
+  @Get('all-user-details')
+  @ApiOkResponse({ description: 'The resource was returned successfully' })
+  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  @ApiNotFoundResponse({ description: 'Resource not found' })
+  async getAllUserDetails(){
+    const users = await this.coreService.getAllUsers();
+    return {
+      users: users,
+    }
+  }
+  @Get('recent-users')
+  @ApiOkResponse({ description: 'The resource was returned successfully' })
+  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  @ApiNotFoundResponse({ description: 'Resource not found' })
+  async getRecentUsers(){
+    const users = await this.coreService.getRecentAddUserList();
+    return {
+      users: users,
+    }
+  }
+
+  @Get('users-analytics')
+  @ApiOkResponse({ description: 'The resource was returned successfully' })
+  @ApiForbiddenResponse({ description: 'Unauthorized Request' })
+  @ApiNotFoundResponse({ description: 'Resource not found' })
+  async getUserAnalyticsData(){
+    const usersData = await this.coreService.getUsersAnalytics();
+    return {
+      usersData: usersData,
+    }
+  }
+
+
+  
+
 }
