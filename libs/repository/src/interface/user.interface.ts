@@ -6,7 +6,5 @@ export interface UserInterface {
   email: string;
   id: string;
   password: string;
-  // admin: boolean;
-  // user: boolean;
   roles: Role[];
 }

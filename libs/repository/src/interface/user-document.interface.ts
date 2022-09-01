@@ -7,7 +7,5 @@ export interface UserDocumentInterface extends Document {
   phoneNumber: string;
   email: string;
   password: string;
-  // admin: boolean;
-  // user: boolean;
   roles: Role[];
 }

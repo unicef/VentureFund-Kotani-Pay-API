@@ -15,15 +15,16 @@ import { GetBalanceDto } from '@kotanicore/repository/dtos/getBalance.dto';
 import { AuthService, JwtAuthGuard } from '@kotanicore/auth';
 import { LoginDto } from '@kotanicore/repository/dtos/login.dto';
 import { GetUserDto } from '@kotanicore/repository/dtos/getUser.dto';
-import { ApiCreatedResponse,
-        ApiUnauthorizedResponse,
-       ApiForbiddenResponse,
-       ApiOkResponse,
-       ApiNotFoundResponse,
-       ApiUnprocessableEntityResponse } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiUnauthorizedResponse,
+  ApiForbiddenResponse,
+  ApiOkResponse,
+  ApiNotFoundResponse,
+  ApiUnprocessableEntityResponse,
+} from '@nestjs/swagger';
 import { Roles } from '@kotanicore/auth/rbac/roles.decorator';
 import { Role } from '@kotanicore/auth/rbac/enums/role.enum';
-import { RolesGuard } from '@kotanicore/auth/rbac/guards/roles.guard';
 
 @Controller()
 export class AppController {
@@ -46,14 +47,12 @@ export class AppController {
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   async login(@Body() data: LoginDto) {
     const user = await this.authService.validateUser(data.phone, data.password);
-    // console.log({ user });
 
     if (user) {
       return await this.authService.login(user, '');
     } else {
       throw new HttpException('Wrong Credentials', HttpStatus.UNAUTHORIZED);
     }
-    // return;
   }
 
   @Post('create')
@@ -95,22 +94,22 @@ export class AppController {
   }
 
   // send ObjectId
-  @Get("user")
+  @Post('user')
   @ApiOkResponse({ description: 'The resource was returned successfully' })
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   @ApiNotFoundResponse({ description: 'Resource not found' })
-  async getUser(@Body() body: GetUserDto): Promise<any>{
-    return await this.coreService.getUser(body.id)
+  async getUser(@Body() body: GetUserDto): Promise<any> {
+    return await this.coreService.getUser(body.id);
   }
 
   @Get('transactions')
   @ApiOkResponse({ description: 'The resource was returned successfully' })
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   @ApiNotFoundResponse({ description: 'Resource not found' })
-  async getTransactions(){
+  async getTransactions() {
     const transactions = await this.coreService.listTransactions();
     return {
       transactions: transactions,
-    }
+    };
   }
 }
