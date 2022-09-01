@@ -81,8 +81,11 @@ export class BaseMongoRepository {
   }
 
   getUserAnalytics = async () => {return await this.userModel.aggregate([
-    {$match:{"createdAt":{$gte:new Date("01/01/2022")}}},
-    {$count:"users"}
+    {$group:{
+      _id:{$substr:["$createdAt",5,2]},
+      numberOfUsers:{$sum:1}
+    }}
+
   ])}
   
 
