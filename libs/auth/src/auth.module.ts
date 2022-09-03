@@ -4,6 +4,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from '@kotanicore/auth/auth.service';
 import { JwtStrategy } from '@kotanicore/auth/guards/jwt.strategy';
 import { RepositoryModule } from '@kotanicore/repository';
+import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './rbac/guards/roles.guard';
 
 @Module({
   imports: [
