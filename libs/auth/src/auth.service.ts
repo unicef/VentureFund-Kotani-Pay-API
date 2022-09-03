@@ -32,10 +32,9 @@ export class AuthService {
       sub: user.id,
     };
 
-
     try {
       const result = {
-        token: this.jwtService.sign(payload) 
+        token: this.jwtService.sign(payload),
       };
       return result;
     } catch (err) {

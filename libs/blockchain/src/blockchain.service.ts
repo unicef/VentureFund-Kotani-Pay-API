@@ -43,8 +43,7 @@ export class BlockchainService {
     };
   }
 
-
-  async getPrivateKey () => {
-    return ''
+  async getPrivateKey(seedkey: string, IV: string) {
+    return '';
   }
 }

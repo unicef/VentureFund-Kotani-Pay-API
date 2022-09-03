@@ -119,6 +119,6 @@ export class AppController {
   @ApiForbiddenResponse({ description: 'Unauthorized Request' })
   @ApiNotFoundResponse({ description: 'Resource not found' })
   async getLoan(@Body() body: GetMoolaLoan) {
-    return await this.coreService.processMoolaLoan(body.id);
+    return await this.coreService.processMoolaLoan(body.id, body.amount);
   }
 }

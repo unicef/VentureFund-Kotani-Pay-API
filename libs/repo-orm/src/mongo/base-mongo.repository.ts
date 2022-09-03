@@ -34,14 +34,14 @@ export class BaseMongoRepository {
     };
   };
 
-  getAccountDetails = async (userId) =>  {
-    const account = await this.accountModel.findById(userId).;
+  getAccountDetails = async (userId) => {
+    const account = await this.accountModel.findById(userId);
 
     return {
       publicaddress: account.publicAddress,
-      seedKey: account.seedKey
-    }
-  }
+      seedKey: account.seedKey,
+    };
+  };
   getUserDetails = async (userId) => await this.userModel.findById(userId);
 
   checkisUserKyced = async (userId) =>
